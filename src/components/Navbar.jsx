@@ -28,48 +28,55 @@ const Navbar = ({
 
       {/* ==== NAVIGATION MENU ==== */}
       {/* <AnimatePresence> */}
-        {isMobileMenuOpen && (
-          <motion.div
-            key="mobileMenu"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="flex flex-col items-center justify-center fixed inset-0 bg-dark bg-opacity-95 space-y-6 p-10 lg:hidden"
-          >
-            {/* === Nav Links === */}
-            {['Home', 'Services', 'Work', 'About', 'Contact'].map((item) => (
-              <motion.a
-                key={item}
-                href={item === 'Home' ? '#' : `#${item.toLowerCase()}`}
-                className="text-lg font-medium hover:text-primary transition py-3"
-                onClick={toggleMobileMenu}
-                whileHover={{ scale: 1.1 }}
-              >
-                {item}
-              </motion.a>
-            ))}
-
-            {/* === CTA Button === */}
+      {isMobileMenuOpen && (
+        <motion.div
+          key="mobileMenu"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          className="
+          fixed inset-0 
+          h-screen w-screen 
+          flex flex-col items-center justify-center 
+          backdrop-blur-xl bg-black/70 
+          space-y-6 p-10 lg:hidden
+        "
+        >
+          {/* === Nav Links === */}
+          {['Home', 'Services', 'Work', 'About', 'Contact'].map((item) => (
             <motion.a
-              href="#contact"
-              className="bg-primary text-dark px-8 py-2 rounded-full font-bold hover:bg-opacity-80 transition mt-4 hover:-translate-y-1 duration-300"
-              whileHover={{ scale: 1.05 }}
-            >
-              Get Started
-            </motion.a>
-
-            {/* === Close Icon === */}
-            <motion.button
-              aria-label="Close Menu"
-              className="absolute top-6 right-6 text-2xl"
+              key={item}
+              href={item === 'Home' ? '#' : `#${item.toLowerCase()}`}
+              className="text-2xl font-semibold hover:text-primary transition py-3"
               onClick={toggleMobileMenu}
-              whileTap={{ scale: 0.8 }}
+              whileHover={{ scale: 1.1 }}
             >
-              <FaTimes />
-            </motion.button>
-          </motion.div>
-        )}
+              {item}
+            </motion.a>
+          ))}
+
+          {/* === CTA Button === */}
+          <motion.a
+            href="#contact"
+            className="bg-primary text-dark px-8 py-3 rounded-full font-bold hover:bg-opacity-80 transition mt-4"
+            whileHover={{ scale: 1.05 }}
+          >
+            Get Started
+          </motion.a>
+
+          {/* === Close Icon === */}
+          <motion.button
+            aria-label="Close Menu"
+            className="absolute top-6 right-6 text-3xl"
+            onClick={toggleMobileMenu}
+            whileTap={{ scale: 0.8 }}
+          >
+            <FaTimes />
+          </motion.button>
+        </motion.div>
+      )}
+
       {/* </AnimatePresence> */}
 
       {/* ==== DESKTOP MENU ==== */}
